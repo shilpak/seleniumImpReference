@@ -1,0 +1,1024 @@
+1. Syntax for Actions
+Sol:-WebDriver driver =new ChromeDriver();
+     Actions a=new Actions(driver)
+     a.clickAndHold(driver.findElement(By.xpath("//*[@id='draggable']"))).moveToElement(driver.findElement(By.xpath("//*[@id='droppable']"))).release().build().perform();
+
+----------------------------------------------------------------------------------------------------
+2. Write code for the positive and negative scenario for Alerts
+Sol:- WebDriver driver =new ChromeDriver();
+      Alert a=driver.switchTo().alert();
+      String s=a.getText();
+      if(s.equals("Please enter your User ID")){
+      System.out.println("Pop up text was correct");
+      else{
+      System.out.println("Pop up text was incorrect");
+       }
+      a.accept(); // to click ok
+      a.dismiss();// to click cancel	
+-----------------------------------------------------------------------------------------
+3. Syntax for Windows handler
+Sol:- WebDriver driver=new ChromeDriver();
+      Set<String> handler=driver.getWindowHandles();
+      Iterator<String> it=handler.iterator();
+      String parentwindowid=it.next();
+      String childwindowid=it.next();
+      driver.switchTo().window(parentwindowid)
+--------------------------------------------------------------------------------------------------
+
+4. Find odd number
+Sol:- package repeatPrograms;
+
+     public class OddNumbers {
+
+	public static void main(String[] args) {
+		
+		int a[]= {1,2,3,4,5,6,7,8,9,10};
+		for(int i=0;i<a.length;i++) {
+			
+			if(a[i]%2==0) {
+				//System.out.println("Even Numbers are:"+a[i]);
+				
+			}else {
+				System.out.println("Odd Numbers are:"+a[i]);
+			}
+		}
+
+	}
+
+}
+
+-----------------------------------------------------------------------------------
+5. Disadvantages of Selenium
+
+Sol:   1)Selenium only supports webbased application and does not support window based application.
+       2)Selenium needs outside support for report generation activities like dependent on TestNG or Jenkins.
+       3)Cannot automate Capture and Barcode.etc...
+-------------------------------------------------------------------------------------------------
+6. Difference between get() and navigate().to()
+
+Sol: WebDriver driver =new ChromeDriver();
+     driver.get("http://www.google.com)
+     driver.navigate().to("http://www.gmail.com")
+     Both are used to launch sites but driver.navigate().to(URL) is used to move directly from one site to another site.
+---------------------------------------------------------------------------------------
+7. Write code to click on the Check box which is inside the Dynamic Table
+Sol:-public void selectContactsByName(String name) {
+		
+		driver.findElement(By.xpath("//a[text()='"+name+"']//parent::td[@class='datalistrow']"
+				+ "//preceding-sibling::td[@class='datalistrow']//input[@name='contact_id']")).click();
+	}
+	 
+Note: For clicking the check box we used driver.click() and with the help of dynamic xpath we need to locate webElement.
+
+--------------------------------------------------------------------------------------------------------------
+8. Write code for taking Screenshot
+
+File src=((TakesScreenShot)driver). getScreenShotAs(OutputType.FILE);
+FileUtils.copyFile(src,new File("E://frameworks//basicselenium//facebook1.jpg"))
+
+----------------------------------------------------------------------------------------------------------
+
+9. Explains Maps in Java
+
+Sol:-  The java.util.Map interface represents a mapping between a key and a value 
+       1) A Map cannot contain duplicate keys and each key can map at most one value.
+       2)Some implementations allow null key and null value like the HashMap and LinkedHashMap, but some do not          like the TreeMap.
+       3)There are two interfaces for implementing Map in java: Map and SortedMap, and three classes: HashMap,TreeMap and LinkedHashMap.
+       4)A Map are perfect to use for key-value association mapping such as dictionaries.
+   Methods in Map interface :-
+1)public Object put(Object key,Object value): insert entry into the Map.
+2)public void putAll(Map map): This method is used to insert the specifed map in this map.
+3)public Object remove(Object key): This method is used to delete an entry for the specified key.
+4)public Object get(Object key):This method is used to return the value for the specified key.
+5)public boolean containsKey(Object key):This method is used to search the specified key from this Map.
+6)public Set keySet(): This method is used to return the Set view containing all the keys.
+7)public Set entrySet(): This method is used to return the Set view containing all the keys and values.
+----------------------------------------------------------------------------------------
+
+10. Explain framework (Questions based on your framework explanation)
+
+Sol:- It total depend on which framework you are using:
+      Some of the framework are:
+      1)Data driven framwork.
+      2)BDD (Behaviour driven development framework).
+      3)testNg( Test new generation framework)
+      4)Hybridframework ( Combination of data driven +testNg with POM pattern )
+      5)keyword driven framework.
+-------------------------------------------------------------------------------------------
+11. What is Pom.xml
+Sol: -POM is an XML file which contains the project configuration details used by Maven. It provides all the configuration required for a project.
+
+-------------------------------------------------------------------------------------------------
+12. Which is the correct Xpath for this code (Lot of questions on Xpath)
+--------------------------------------------------------------------------------
+13. Xpath methods Ex: Starts-with & Contains
+
+Sol:-Some of the methods used in the xpath are:
+
+    1) contains()
+    2)starts-with()
+    3)text().....
+-------------------------------------------------------------------------------------------
+14. Syntax for Css selector
+
+Sol:-WebDriver driver=new ChromeDriver()
+     driver.findElement(By.cssSelector(" ")).sendkeys();
+
+Note: Depends on Tag,Id,class and Attribute
+--------------------------------------------------------------------------
+
+15. How to identify dynamic images.
+
+
+-------------------------------------------------------------------------------------------------
+
+16. From a given string,seperate characters,integers and special characters and store in a seperate variables and print them.
+
+Sol:-package repeatPrograms;
+
+public class StringSplitProgram {
+
+	public static void splitString(String str) {
+		
+		StringBuffer alpha=new StringBuffer(), // alpha object is to store alphabets.
+				     num=new StringBuffer(), // num object is to store numbers
+				     special=new StringBuffer(); // special object is used to store special characters.
+		
+		for(int i=0;i<str.length();i++) {
+			
+			if(Character.isAlphabetic(str.charAt(i))) {
+				alpha.append(str.charAt(i));
+			}else if(Character.isDigit(str.charAt(i))){
+				num.append(str.charAt(i));
+				
+				}else {
+					special.append(str.charAt(i));
+			}
+		}
+		
+		System.out.println("Alphabatics present in the string are:"+alpha);
+		System.out.println("Numbers present in the string are:"+num);
+		System.out.println("Specialcharacters present in the string are:"+special);
+	}
+	
+	public static void main(String[] args) {
+	
+		StringSplitProgram.splitString("saip144@gmail.com");		
+		
+
+	}
+
+}
+------------------------------------------------------------------------------------------------------------
+ 
+17. Remove duplicates from arraylist
+
+Sol:- package repeatPrograms;
+
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class RemoveDuplicates {
+
+	public static void main(String[] args) {
+		
+		// How to remove duplicate elements from an a ArrayList in java.
+		
+		// 1) approach using contains() method.
+		
+		List<String >emplist=new ArrayList<String>();
+		emplist.add("chigullapally");
+		emplist.add("Sai Prasad");
+		emplist.add("chigullapally");
+		emplist.add("Sreenivasulu Setty");
+		
+		System.out.println("Emplist before removing duplicates are: "+emplist);
+		
+		// Create new ArrayList object to store only without duplicates.
+		
+		List<String>newempllist=new ArrayList<String>();
+		
+		for(String emp:emplist) {
+			if(!newempllist.contains(emp)) {
+				newempllist.add(emp);
+			}
+		}
+		System.out.println("Emplist After removing duplicate are:"+newempllist);
+		
+	}
+
+}
+------------------------------------------------------------------------------------------------------------
+
+18. Print all the frame names
+
+Sol:- package repeatPrograms;
+
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class PrintAllTheFrameNames {
+
+	public static void main(String[] args) {
+
+		System.setProperty("webdriver.chrome.driver", "E:\\Selenium softwares\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		/*
+		 * Dimension d=new Dimension(1800,1200); driver.manage().window().setSize(d);
+		 */
+		driver.manage().timeouts().pageLoadTimeout(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().deleteAllCookies();
+		driver.get("https://www.hdfcbank.com/");
+		List<WebElement> frameslist = driver.findElements(By.tagName("iframe"));
+		System.out.println("Total number of frames in the webpage are:" + frameslist.size()); // To get total number of
+		// To print all the frame name																						// frames in the webpage
+		for(WebElement frame:frameslist) {
+			System.out.println("Frame id:"+frame.getAttribute("id")); // return the id of the frame.
+			System.out.println("Frame name:"+frame.getAttribute("name"));// return the name of the frame.
+		}
+		
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------
+
+19. How to read from XML or CSV file and store in hashmap
+
+--------------------------------------------------------------------------------------------------------
+
+20. Get value of a cell in Dynamic table
+
+Sol:- Select s1=new Select(driver.findElement(By.xpath("//*[@name='slctMonth']")));
+	s1.selectByVisibleText(month);
+	
+	Select s2=new Select(driver.findElement(By.xpath("//*[@name='slctYear']")));
+	
+	s2.selectByVisibleText(year);
+	
+	//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[1]
+	//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[2]
+	//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[2]/td[7]
+	
+	String beforexpath="//*[@id='crmcalendar']/table/tbody/tr[2]/td/table/tbody/tr[";
+	String afterxpath="]/td[";
+	
+	final int totalweekdays=7;
+	Boolean flag=false;
+
+	for(int rownum=2;rownum<=7;rownum++)
+	{
+		for(int colnum=1;colnum<=totalweekdays;colnum++)
+		{
+			String dayval=driver.findElement(By.xpath(beforexpath+rownum+afterxpath+colnum+"]")).getText();
+			System.out.println(dayval);
+			if(dayval.equals(day))
+			{
+				driver.findElement(By.xpath(beforexpath+rownum+afterxpath+colnum+"]")).click();
+				flag=true;
+				break;
+			}
+
+		}
+		
+		if(flag)
+		{
+			break;
+		}
+	}
+-----------------------------------------------------------------------------------------------------------------
+
+21. What is Burndown chart (Agile)
+
+Sol:-- Scrum Master will prepare during sprint process in 30 days. It will be measures based on number of days vs effort. 
+
+size of team(Scrum team size)(10 members) * No of days (Sprint duration)(30 days) * (working hours (8 hours per day)= Total hours.
+
+--------------------------------------------------------------------------------------------------
+
+22. Print these characters from a given string and change to uppercase
+Sol:--
+package repeatPrograms;
+
+public class StringCharactertoUpperCase {
+
+	public static void main(String[] args) {
+		
+		String s="saiprasad";
+		// printing all the characters in the string.
+		for(int i=0;i<s.length();i++) {
+			System.out.println(s.charAt(i));
+			
+		}
+		System.out.println(s.toUpperCase());
+	}
+
+}
+--------------------------------------------------------------------------------------------------------
+23. Explain Access specifiers 
+
+Sol:-- Access Specifiers in java are:-  
+
+In java we have four Access Specifiers and they are listed below.
+
+1. public
+2. private
+3. protected
+4. default(no specifier)
+
+Access Modifiers                  Default   private   protected public
+
+--> Accessible inside the class    yes	    yes		yes      yes		
+-->Accessible within the subclass  
+inside the same package.            yes     no          yes      yes
+--> Accessible outside the package  no      no          no       yes
+--> Accessible within the subclass
+outside the package.                no      no          yes      yes
+
+-------------------------------------------------------------------------------------------------------------  
+
+24. Difference between Priority and Severity
+
+ s.no                  Priority                                         Severity
+ 
+  1	Defect priority has defining the order in which         Defect Severity is defining as the degree of
+        the developer should resolue the defect.                impact that a defect has on the operation of
+                                                                the product.
+  2	Priority is categorized into three types                Severity is categorized into five types
+     --> Low                                                    --> Critical
+     --> Medium                                                 --> Major
+     --> High                                                   --> Moderate
+                                                                --> Minor
+                                                                --> Cosmetic
+ 3	Priority is associating with scheduling			Severity is associated with functionality or 
+   								Standards.
+ 4	Priority indicates how soon the bug should		Severity indicates the seriouness of the defect 
+ 	be fixed.	 					on the product functionality.
+ 5	priority of defect is decided in consulting		QA engineer determines the severity level of
+ 	with the manager/client 				defect.
+ 6	Prioriy is driven by business value.			Severiy is driven by functionality.
+
+Note: LowSeverityWithHighPriority: A logo error for any shipment website  ....etc
+Note2:HighSeverityWithLowPriority: Flight Operating Website......etc
+
+--------------------------------------------------------------------------------------------------------
+25. Example for High Priority and Low Severity and vice versa
+
+Sol:-  Note: LowSeverityWithHighPriority: A logo error for any shipment website  ....etc
+       Note2:HighSeverityWithLowPriority: Flight Operating Website......etc
+
+--------------------------------------------------------------------------------------------------
+
+26. Difference between Test Strategy and Test Scenario
+
+sol:-   The test plan is a term and a deliverable. The test plan is a document that lists all the activities in a QA project, schedules them, defines the scope of the project, roles & responsibilities, risks, entry & exit criteria, test objective and anything else that you can think of. The test plan is as I like to call a ‘super document’ that lists everything there is to know and need. Please check this link for more information and a sample.
+
+This is also a deliverable and also a document at that. Test strategy outlines the testing approach and everything else that surrounds it. It is different from the test plan, in the sense that a Test strategy is only a subset of the test plan. It is a hardcore test document that is to an extent generic and static. There is also an argument about at what levels test strategy or plan is used- but I really do not see any discerning difference.
+
+Example: Test plan gives the information of who is going to test at what time. For example, Module 1 is going to be tested by “X tester”. If tester Y replaces X for some reason, the test plan has to be updated.
+
+On the contrary, a test strategy is going to have details like – “Individual modules are to be tested by test team members. “ In this case, it does not matter who is testing it- so it’s generic and the change in the team member does not have to be updated, keeping it static.
+----------------------------------------------------------------------------------------------
+27. What Software Metrics you have used in your project
+
+Sol:Software testing metrics:It is defined as the quantitative measure that helps to estimate progress,quality,and health of a software testing effort.
+
+Process Metrics: It can be used to improve the process efficiency of the SDLC ( Software Development Life Cycle)
+Product Metrics: It deals with the quality of the software product
+Project Metrics: It can be used to measure the efficiency of a project team or any testing tools being used by the team members
+Identification of correct testing metrics is very important. Few things need to be considered before identifying the test metrics
+
+Fix the target audience for the metric preparation
+Define the goal for metrics
+Introduce all the relevant metrics based on project needs
+Analyze the cost benefits aspect of each metrics and the project lifestyle phase in which it results in the maximum output.
+
+--------------------------------------------------------------------------------------------------------------------
+
+28. How to handle Dynamic Elements,since the webpage is designed in Angular Js
+
+
+---------------------------------------------------------------------------------------------
+29. Implicit and Explicit Waits
+
+Implicit wait:The implicit wait tells to the WebDriver to wait certain amount of time before it throws "NoSuchElementException" or any another exception .Once we set the time WebDriver will wait for that time before throwing an exception. 
+
+syntax: WebDriver driver =new ChromeDriver();
+     	driver.manage().timeouts().implicitlywait(20,TimeUnit.SECONDS);
+
+Explicit Wait:  The Explicit wait is used tell the WebDriver to wait for certain condition( Expected Conditions).It is a kind of intelligent wait, but it can be appliend for specified elements.
+
+syntax:public static void clickOn(WebDriver driver,WebElement locater,int timeout) {
+	
+	WebDriverWait dd=new WebDriverWait(driver,timeout);
+	dd.ignoring(StaleElementReferenceException.class).until(ExpectedConditions.elementToBeClickable(locater));
+	locater.click();
+	
+}
+------------------------------------------------------------------------------------------------------------------ 
+
+30. Write code for Cross Browser Testing
+
+Sol:- public static void intialization() {
+		
+		String browsername=prop.getProperty("browser");
+		if(browsername.equals("chrome")) {
+			System.setProperty("webdriver.chrome.driver","E:\\Selenium softwares\\chromedriver.exe");
+		     driver=new ChromeDriver();
+		}
+		else if(browsername.equals("FF")) {
+			System.setProperty("webdriver.gecko.driver", "C:\\Users\\SAI\\Desktop\\mindq practice\\webdriverbrowsers\\geckodriver.exe ");
+			driver=new FirefoxDriver();
+		
+		}
+....for opera
+....for IE
+....for edge
+....for safari
+....
+---------------------------------------------------------------------------------------------------------
+
+31. Explain Method Overloading and Method Overriding with Example.
+
+Sol:-  Method Overloading:-public class MethodOverloading {
+
+	// MethodOverloading means : With the same method with different arguments
+	// is known as method overloading in same class
+	// You can not create method inside a method.
+
+	public static void main(String[] args) {
+
+		MethodOverloading m = new MethodOverloading();
+		m.sum();
+		m.sum(20);
+		m.sum(20, 30);
+
+	}
+
+	public void sum() {
+		System.out.println("Sum Method");
+	}
+
+	public void sum(int i) {
+		i = 20;
+		System.out.println("The value  of i is:" + i);
+	}
+
+	public void sum(int i, int j) {
+
+		System.out.println("The value of i and j are:" + i);
+		System.out.println("The value of i and j are:" + j);
+	}
+
+}
+
+Method overriding:-
+
+package oopConceptpart2;
+
+public class MethodOverRidingTest {
+
+	public static void main(String[] args) {
+
+		// MethodOverriding: When same method name with same number of parameters available in child and parent
+		
+		// StaticPolymorphism or Compile time polymorphism
+		
+		// Polymorphism means: one from many than can inherit from parents.
+		MethodOverRidingBMW c = new MethodOverRidingBMW();
+		c.start();// There are two same methods in parent class and child class
+					// with the same name : child class method will be called
+		
+		c.stop();
+		c.refuel();
+		c.theftSafety();
+		c.engine(); // Inheriting from grandparent --  vehile class
+
+		
+		System.out.println("**************");
+		
+		MethodOverRidingCar b=new MethodOverRidingCar();
+		b.start();
+		b.stop();
+		b.refuel();
+		
+		// But we can not access theftsafety.
+		// Dynamic Polymorphism or Runtime polymorpism: Child class object is reffered by parent class reference;
+		MethodOverRidingCar i=new MethodOverRidingBMW(); // Top casting: 
+
+		i.start();
+		i.stop();
+		i.refuel();
+		
+		MethodOverRidingBMW ii=(MethodOverRidingBMW) new MethodOverRidingCar(); // Down casting:
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------
+
+
+
+32. What is Static Keyword
+
+Sol:- static keyword is a non-access modifer which is applicable for the following:-
+----> 1)blocks
+----> 2)variables
+----> 3)methods
+----->4)nested classes
+
+If you declare any variable as static, it is known as a static variable.
+
+The static variable can be used to refer to the common property of all objects (which is not unique for each object), for example, the company name of employees, college name of students, etc.
+The static variable gets memory only once in the class area at the time of class loading.
+Advantages of static variable
+It makes your program memory efficient (i.e., it saves memory).
+
+
+Understanding the problem without static variable
+class Student{  
+     int rollno;  
+     String name;  
+     String college="ITS";  
+}  
+Suppose there are 500 students in my college, now all instance data members will get memory each time when the object is created. All students have its unique rollno and name, so instance data member is good in such case. Here, "college" refers to the common property of all objects. If we make it static, this field will get the memory only once.
+
+-----------------------------------------------------------------------------------------------------
+
+33. Dependencies in Pom.xml
+
+Sol:-- Dependencies depends on our project/product requirement 
+
+Please find below are few dependencies of selenium,java,testNg,POI.xml,log4j and xtendreport dependencies.
+
+<dependencies>
+    
+    <dependency>
+        <groupId>org.seleniumhq.selenium</groupId>
+        <artifactId>selenium-java</artifactId>
+        <version>3.141.59</version>
+    </dependency> 
+    
+    <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+<dependency>
+    <groupId>org.testng</groupId>
+    <artifactId>testng</artifactId>
+    <version>6.11</version>
+    <scope>compile</scope>
+</dependency>
+    
+    <dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.16-beta2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>ooxml-schemas</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>openxml4j</artifactId>
+			<version>1.0-beta</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-ooxml-schemas</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi-scratchpad</artifactId>
+			<version>3.9</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>ooxml-schemas</artifactId>
+			<version>1.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>openxml4j</artifactId>
+			<version>1.0-beta</version>
+		</dependency>
+    
+    <dependency>
+			<groupId>com.relevantcodes</groupId>
+			<artifactId>extentreports</artifactId>
+			<version>2.41.2</version>
+		</dependency>
+		
+		  <dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+  </dependencies>
+----------------------------------------------------------------------------------------------------------------
+
+34. Write code for fetching data from Excel:
+
+Note: To fetch the data from excel sheet into our program we required excel utility (600 to 700 lines of code) with the help of methods available in this utility like getcelldata(),getRowCount(),setCellData() once after creating an a object to the utility we can use.
+
+Sol:- Process1: Fetching data from excel to webpage:-
+
+package com.test;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+import com.excel.utilities.Xls_Reader;
+
+public class DataDrivenTest {
+
+	// To read the data from excel file : So we required excel sheet.
+
+	@Test
+	public void dataprovider() {
+		// Note: Here there is one drawback everytime we need to use repetative code to
+		// overcome we use for loop or parametarization. : To change the row count.
+		
+		// Getting TestData from excel
+		Xls_Reader reader = new Xls_Reader(
+				"E:\\myselenium\\TestNGBasics\\src\\main\\java\\com\\testdata\\halfebaytestdata1.xlsx");
+		String firstname = reader.getCellData("RegTestData", "firstname", 2);
+		System.out.println(firstname);
+		String lastname = reader.getCellData("RegTestData", "lastname", 2);
+		System.out.println(lastname);
+		String address1 = reader.getCellData("RegTestData", "address1", 2);
+		System.out.println(address1);
+		String address2 = reader.getCellData("RegTestData", "address2", 2);
+		System.out.println(address2);
+		String city = reader.getCellData("RegTestData", "city", 2);
+		System.out.println(city);
+		String state = reader.getCellData("RegTestData", "state", 2);
+		System.out.println(state);
+		String zipcode = reader.getCellData("RegTestData", "zipcode", 2);
+		System.out.println(zipcode);
+		String emailaddress = reader.getCellData("RegTestData", "emailaddress", 2);
+		System.out.println(emailaddress);
+
+		// Selenium WebDriver code
+
+		System.setProperty("webdriver.chrome.driver", "E:\\Selenium softwares\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://scgi.half.ebay.com/ws/ebayISAPI.dll?RegisterEnterinfo&usage=2943&ru=");
+		driver.manage().window().maximize();
+		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.findElement(By.id("firstname")).sendKeys(firstname);
+		driver.findElement(By.id("lastname")).sendKeys(lastname);
+		driver.findElement(By.id("address1")).sendKeys(address1);
+		driver.findElement(By.id("address2")).sendKeys(address2);
+		driver.findElement(By.id("city")).sendKeys(city);
+		Select select = new Select(driver.findElement(By.id("state")));
+		select.selectByVisibleText(state);
+		driver.findElement(By.id("zip")).sendKeys(zipcode);
+		driver.findElement(By.id("email")).sendKeys(emailaddress);
+		driver.findElement(By.id("retype_email")).sendKeys(emailaddress);
+
+	}
+
+}
+
+process 2: Fetching data from excel to webpage:-
+
+@DataProvider
+	public Object[][] getTestCRMData() {
+		
+		Object data[][]=TestUtil.getTestData(sheetname);
+		return data;
+		
+	}
+	
+	@Test(priority=4,dataProvider="getTestCRMData")
+	public void validateCreateNewContact(String title,String firstname,String lastname,String company) {
+		homepage.clickonNewContactLink();
+//		contactspage.createNewContact("Mr.", "First", "interviw", "letmecall");
+		contactspage.createNewContact(title, firstname,lastname, company);
+		
+	}
+
+--------------------------------------------------------------------------------------------------------------------
+ 
+35. Select this value in dropdown and hover to this element and click.
+
+Sol:-  Select ss=new Select(driver.findElement(By.name("country")));
+		ss.selectByVisibleText("India"); or ss.selectByIndex(11); or ss.selectByValue("value");
+        with the help of click() we can click();
+ -----------------------------------------------------------------------------------------------------------
+36. Assert and Verify
+
+Sol: Both Assert and Verify commands are used to find wheter given input is present or not  on the webpage.
+
+when "assert" command fails,the test execution will be aborted.So when the assertion fails,all the test steps after line of code are skipped. The solution to overcome this issue is to use try and catch block.We use assertion in try block.Mostly,the assert command is used when the end results of the check value should pass to contiue to the next step.
+
+In simple words,if the assert condition is true then the program control will execute the next step but if the condition is false,the execution will stop and further test step will not be executed.
+
+To overcome this we use softassertion in TestNg
+
+Verify commands in Selenium:-
+
+In simple words,there won't be any halt in the test execution even though the verify condition is true or false.
+We can use if-else and try-catch
+--------------------------------------------------------------------------------------------------------------
+
+37. Check if a given string is Palindrome or not
+
+Sol:-  package basicprograms;
+
+import java.util.Scanner;
+
+public class PalindromeProgram {
+
+	public static void main(String[] args) {
+		
+		String str;
+		String rev="";
+		System.out.println("Enter a String");
+		Scanner sc=new Scanner(System.in);
+		str=sc.nextLine();
+		int length=str.length();
+		for(int i=length-1;i>=0;i--) {
+			rev=rev+str.charAt(i);
+		}
+		if(str.equals(rev)) {
+			System.out.println("Given String is palindrome:"+str);
+		}else {
+			System.out.println("Given String is not palindrome:"+str);
+		}
+
+	}
+
+}
+-------------------------------------------------------------------------------------------
+
+38. Remove duplicate characters from a string and print
+
+Sol:-  package basicprograms;
+
+import java.util.LinkedHashSet;
+import java.util.Set;
+
+public class RemovingDuplicateinString {
+
+	public static void main(String[] args) {
+
+		String str = "saiprasad";
+		System.out.println("Before duplicate value is:"+str);
+		char a[]=str.toCharArray();
+		
+		Set<Character> s=new LinkedHashSet<Character>();
+		
+		for(char b:a) {
+			s.add(b);
+		}
+		
+		StringBuilder sb=new StringBuilder();
+		
+		for(Character b:s) {
+			sb.append(b);
+		}
+		
+		System.out.println("After removing duplicat value is "+sb.toString());
+
+		
+		
+
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------
+
+39. Which Code Repository you are using (Ex: GitHub)
+
+Code Repository: Git Hub is collabration platform.It is built on top of Git .It allows you to keep both local and remote copies of your project.A project you can publish it among your team members as they can use it and update it from there itself.
+
+Advantages of Using GitHub for Selenium:-
+1) When multiple people working on the same project they can update project details and inform other team members simultaneously.
+2)Jenkins can help us to regularly build the project from the remote repository this helps us to heep track of failed builds.
+
+Commands used in git area below:
+
+Git commands :-
+git init
+git remote add origin http://github.com/saiprasadchigullapally/testngframeworkbasics.git
+git status
+git add .                      (. Indicates all sub folder in the master folder)
+git status
+git commit -m "comment based on command"
+git push origin master
+
+For pulling the data from git repository or git server
+Select the folder to which you want to move the content(E:\batch233\clone) in command pr
+git clone http://github.com/saiprasadchigullapally/testngframeworkbasics.git (which file from git website)
+git pull origin master
+-------------------------------------------------------------------------------------------------------------
+
+
+40. How will you estimate the time to automate a scenario
+
+To estimate the time to automate a scenario in a automation project it depends on the following factors:
+
+1) Scope of the project.
+2)Complexity of the project.
+3)Use of Supporting Tools/ Technologies
+4)Implementing the framework
+5)Learning and Training
+6)Environment SetUp
+7)codding/Scripting And Review
+
+The thumb rule here is “Identify certain criteria, divide your modules or test case on those criteria; and scale it”. Based on your scaled figure – you can come to an accurate estimation.
+
+Factor #7: Coding / scripting and Review
+
+Meaning: Writing the actual test scripts and reviewing them
+
+Steps Involved:
+
+Test cases and framework is ready.
+Take/divide the test cases and convert it into automated scripts and track your progress
+Deliverable: Automated test scripts
+
+Remarks: the Whole team should participate in writing the test scripts using the implemented framework. So while estimating, efforts from the whole team should be taken into consideration.-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+41. How to perform Right Click
+ 
+42. In a Dynamic Table if i give 1 cell value,it should give me the values of other cells in that row
+
+43. Have you Developed any Tool,If yes explain
+
+44. Write code for handling Frames
+
+45. Read from a text file and store in HashMap
+
+46. Print the occurance of each character if it is present more than once in a given string
+
+47. Write code for nested drop-down,You have to check all the values in the dropdown,All permutation and combination.
+
+48. Advantages of Selenium
+
+49. How to check if a checkbox is displayed
+
+50. If the element is not present,how will you print the Element is not present message
+51. What all exceptions you have faced
+
+52. What all difficulties you have faced in Selenium
+
+53. What all TestNG Annotations you have used in project
+
+54. Where will you maintain the code
+
+55. What all Collections,you have used in your project 
+
+56. How to run multiple test cases
+
+57. What are Primitive and Non primitive Data Types
+
+58. What is JDK,JRE and JVM
+
+59. Settings.xml in Maven
+
+60. Eliminate first and last string from array and print
+
+61. What is Encapsulation
+
+62. What is the use of build() and perform() in Actions
+
+63. How you will check the actual vs expected result
+
+64. Xpath Axes,Ex: Following.
+
+65. Automate Menu and Sub Menu and click on link in Sub Menu and navigate to the page and click on an element.
+
+66. Syntax for Alerts
+
+67. How will you generate Reports
+
+68. What is the execution time of your test cases
+
+69. Print a Reverse Pyramid
+
+70. Go to frame and click on the upload button and select the file which is in this directory
+
+71. Difference between PUTS and POST in API
+
+72. Read data from Excel and given that data as input for login and password and click on submit and validate the popup which says Login is successful
+
+73. Read data from two text files and compare if they are same or not.
+
+74. Read data from an Excel file and compare the data to the web table and check whether it is same or not.
+
+75. Select multiple option from the dropdown.
+
+76. Explain Defect Lifecycle.
+
+77. How many people are working in your project,what all teams are there.
+
+78. What is your role in your project.
+
+79. How often Daily Traige Call will happen and what will be discussed.
+
+
+-------------------------------------------------Deloitee interview Questions--------------------
+
+1. Tell me about yourself.
+2. Are you working on manual+ automation or only automation?
+3. What tools you have used in your project so far?
+4. Explain bug life cycle. What priorities do you give while raising a bug?
+5. What is a defect triage call?
+6. If in a sprint two user stories have some conflict, what will you do?
+7. Have you worked on BDD framework? Why BDD is preferred over other typical frameworks.
+8. Write a feature file for login scenario.
+9. Are you working on creation of framework from scratch or you just modify the existing framework?
+10. What is a test runner file?
+11. What is POM.xml file? Why it is used?
+12. What is a testNG.xml file? What is the benefit of using a testNG framework?
+13. What is a hybrid framework? What are the components of a framework?
+14. What are the benefits of creating a framework? Why POM approach is preferred?
+15. Have you worked on data driven framework? WAP to fetch data from a excel file, just tell me code.
+16. From what type of files can we obtain test data?
+17. How to find broken links in selenium?
+18. What are test listeners in selenium? What are the different types of test listeners?
+19. What is frame is selenium? Let’s say I have 3 frames, then how I can go to the 3rd frame from 1st frame? And how to come back to 1st frame?
+20. Have you worked on database testing? How many types of joins are there? What is the use of joins in SQL? 
+21. What is the difference between cross join and inner join?
+22. Suppose I alter the table, then I dropped the table, then I did rollback, what can be the output?
+23. What is maven in selenium? How maven is useful?
+24. What is a build life cycle in Maven?
+25. What are the qualities of a good build too? On what basis you will select a build tool?
+26. What is a wrapper class in java?
+27. What is the difference between array and collections in java?
+28. What is the difference between Final, finally, finalize?
+29. What is the difference between SOAP and REST?
+30. What are the different methods used in web services?
+31. Have you worked on GIT? What are the commands in GIT?
+32. What is the overall check in checkout procedure in GIT?
+33. What are the exceptions that you have encountered in selenium?
+34. What are different types of testing?
+35. Tell me the annotations in testNG by order of execution?
+36. What are the pop ups in selenium? How to handle windows windows based pop ups?
+37. Can we handle user session in selenium?
+38. How to capture screenshot in selenium? Tell me the code.
+39. Do you know any scripting language like VB script? Java script? Can you automate web services using rest assured ?
+
+
+
+
+
+
+

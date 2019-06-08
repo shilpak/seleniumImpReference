@@ -253,6 +253,27 @@ public class PrintAllTheFrameNames {
 
 19. How to read from XML or CSV file and store in hashmap
 
+public class convertCSValues {
+
+	public static void main(String[] args) throws IOException {
+	    BufferedReader br = new BufferedReader(new FileReader("test.csv"));
+	    String line =  null;
+	    HashMap<String,String> map = new HashMap<String, String>();
+
+	    while((line=br.readLine())!=null){
+	        String str[] = line.split(",");
+	        for(int i=1;i<str.length;i++){
+	            String arr[] = str[i].split(":");
+	            map.put(arr[0], arr[1]);
+	        }
+	    }
+	    System.out.println(map);
+	 }
+
+
+	}
+
+
 --------------------------------------------------------------------------------------------------------
 
 20. Get value of a cell in Dynamic table
@@ -405,6 +426,11 @@ Analyze the cost benefits aspect of each metrics and the project lifestyle phase
 
 28. How to handle Dynamic Elements,since the webpage is designed in Angular Js
 
+//button [contains(@class, ‘Navyug-Class’)] /following:: input[contains(@id,’Navyug-’)]
+//input [contains(@id,’Navyug-’)] /preceding:: button[contains(@class, ‘Navyug-Class’)]
+
+using starts-with, endswith, contains()....
+
 
 ---------------------------------------------------------------------------------------------
 29. Implicit and Explicit Waits
@@ -450,9 +476,9 @@ Sol:- public static void intialization() {
 
 Sol:-  Method Overloading:-public class MethodOverloading {
 
-	// MethodOverloading means : With the same method with different arguments
+	// MethodOverloading means : With the same methodname with different arguments
 	// is known as method overloading in same class
-	// You can not create method inside a method.
+	
 
 	public static void main(String[] args) {
 
@@ -548,7 +574,8 @@ class Student{
      String name;  
      String college="ITS";  
 }  
-Suppose there are 500 students in my college, now all instance data members will get memory each time when the object is created. All students have its unique rollno and name, so instance data member is good in such case. Here, "college" refers to the common property of all objects. If we make it static, this field will get the memory only once.
+Suppose there are 500 students in my college, now all instance data members will get memory each time when the object is created. All students have its unique rollno and name, so instance data member
+ is good in such case. Here, "college" refers to the common property of all objects. If we make it static, this field will get the memory only once.
 
 -----------------------------------------------------------------------------------------------------
 
@@ -556,7 +583,7 @@ Suppose there are 500 students in my college, now all instance data members will
 
 Sol:-- Dependencies depends on our project/product requirement 
 
-Please find below are few dependencies of selenium,java,testNg,POI.xml,log4j and xtendreport dependencies.
+Please find below are few dependencies of selenium,java,testNg,POI.xml,log4j and extendreport dependencies.
 
 <dependencies>
     
@@ -668,7 +695,8 @@ Please find below are few dependencies of selenium,java,testNg,POI.xml,log4j and
 
 34. Write code for fetching data from Excel:
 
-Note: To fetch the data from excel sheet into our program we required excel utility (600 to 700 lines of code) with the help of methods available in this utility like getcelldata(),getRowCount(),setCellData() once after creating an a object to the utility we can use.
+Note: To fetch the data from excel sheet into our program we required excel utility (600 to 700 lines of code) with the help of methods available in this utility like getcelldata(),
+getRowCount(),setCellData() once after creating an a object to the utility we can use.
 
 Sol:- Process1: Fetching data from excel to webpage:-
 
@@ -764,7 +792,7 @@ Sol:-  Select ss=new Select(driver.findElement(By.name("country")));
  -----------------------------------------------------------------------------------------------------------
 36. Assert and Verify
 
-Sol: Both Assert and Verify commands are used to find wheter given input is present or not  on the webpage.
+Sol: Both Assert and Verify commands are used to find whether given input is present or not  on the webpage.
 
 when "assert" command fails,the test execution will be aborted.So when the assertion fails,all the test steps after line of code are skipped. The solution to overcome this issue is to use try and catch block.We use assertion in try block.Mostly,the assert command is used when the end results of the check value should pass to contiue to the next step.
 
@@ -784,26 +812,26 @@ Sol:-  package basicprograms;
 
 import java.util.Scanner;
 
-public class PalindromeProgram {
+public class StringPalindrome {
 
 	public static void main(String[] args) {
+	
+		checkStringPalindrome("racecar");
 		
-		String str;
-		String rev="";
-		System.out.println("Enter a String");
-		Scanner sc=new Scanner(System.in);
-		str=sc.nextLine();
-		int length=str.length();
-		for(int i=length-1;i>=0;i--) {
-			rev=rev+str.charAt(i);
+	}		
+		
+	public static void checkStringPalindrome(String str) {
+		String rev = "";
+		int a = str.length();
+		for(int i=a-1; i>=0; i--) {
+			rev = rev+str.charAt(i);
 		}
 		if(str.equals(rev)) {
-			System.out.println("Given String is palindrome:"+str);
+			System.out.println("Given string is palindrome:" + str);
 		}else {
-			System.out.println("Given String is not palindrome:"+str);
+			System.out.println("Given string is not a palindrome:" + str);
 		}
-
-	}
+	}	
 
 }
 -------------------------------------------------------------------------------------------
@@ -895,16 +923,65 @@ Test cases and framework is ready.
 Take/divide the test cases and convert it into automated scripts and track your progress
 Deliverable: Automated test scripts
 
-Remarks: the Whole team should participate in writing the test scripts using the implemented framework. So while estimating, efforts from the whole team should be taken into consideration.-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-41. How to perform Right Click
+Remarks: the Whole team should participate in writing the test scripts using the implemented framework. So while estimating, efforts from the whole team should be taken into consideration.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+41. How to perform double click() and Right Click()
+
+Actions actions = new Actions(driver);
+WebElement elementLocator = driver.findElement(By.id("ID"));
+actions.doubleClick(elementLocator).perform();
+
+Actions actions = new Actions(driver);
+WebElement elementLocator = driver.findElement(By.id("ID"));
+actions.contextClick(elementLocator).perform();
  
 42. In a Dynamic Table if i give 1 cell value,it should give me the values of other cells in that row
 
 43. Have you Developed any Tool,If yes explain
 
 44. Write code for handling Frames
+Right click on the element, If you find the option like 'This Frame' then it is an iframe.
+Int size = driver.findElements(By.tagName("iframe")).size();
+if you are switching frame using index===> driver.switchTo().frame(0);
+driver.switchTo().frame("iframe1"); ==> name
+driver.switchTo().frame("id of the element");
+driver.switchTo().parentFrame();
+driver.switchTo().defaultContent();
 
 45. Read from a text file and store in HashMap
+
+public class textFileToHashMap {
+	
+	public static void main(String[] args) throws FileNotFoundException {
+		textFileToHashMap fs = new textFileToHashMap();
+		System.out.println(fs.getNameAddress());
+
+	}
+	
+	public HashMap<String, String> readFile(String fileName) throws FileNotFoundException {
+		
+		HashMap<String, String> details = new HashMap<>();
+		Scanner sc = new Scanner(new File(fileName));
+		String line;
+		while(sc.hasNext())
+		{
+			line = sc.nextLine();
+			String[] keyvalue = line.split(":");
+			keyvalue[1] = keyvalue[1].trim();
+			details.put(keyvalue[0], keyvalue[1]);
+		}
+		sc.close();
+		
+		return details;
+		
+	}
+	
+	public String getNameAddress() throws FileNotFoundException {
+		HashMap<String, String> hm = readFile("C:\\Users\\Shilpa\\Desktop\\data.txt");
+		return hm.get("name")+ "," + hm.get("address");
+	}
+
+}
 
 46. Print the occurance of each character if it is present more than once in a given string
 
